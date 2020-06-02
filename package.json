@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
@@ -10,7 +12,8 @@
   },
   "scripts": {
     "p-start": "ts-node src/server.ts",
-    "d-start": "ts-node-dev ./src/server.ts"
+    "d-start": "ts-node-dev ./src/server.ts",
+    "knex-m": "knex migrate:latest --knexfile knexfile.ts"
   },
   "name": "EcoLeta",
   "version": "0.1.0",
