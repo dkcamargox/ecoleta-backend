@@ -12,8 +12,9 @@
   },
   "scripts": {
     "p-start": "ts-node src/server.ts",
-    "d-start": "ts-node-dev ./src/server.ts",
-    "knex-m": "knex migrate:latest --knexfile knexfile.ts"
+    "d-start": "ts-node-dev --transpileOnly --ignore-watch node_modules ./src/server.ts",
+    "knex-m": "knex migrate:latest --knexfile knexfile.ts",
+    "knex-s": "knex seed:run --knexfile knexfile.ts"
   },
   "name": "EcoLeta",
   "version": "0.1.0",
