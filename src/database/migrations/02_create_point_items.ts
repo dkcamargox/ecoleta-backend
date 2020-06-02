@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
             .notNullable()
             .references('id')
             .inTable('points');
-        table.string('id_items')  
+        table.string('item_id')  
             .notNullable()
             .references('id')
             .inTable('items');
