@@ -5,12 +5,12 @@ class PointsController {
 
     /**
      * retorna todos os pontos de coleta com seus items de coleta
-     * filtros: cidade, uf, items => (Query params)
+     * filtros: cidade, province, items => (Query params)
      * @param request requisição http
      * @param response requisiçção http
      */
     async index(request: Request, response: Response) {
-        const { city, uf, items } = request.query;
+        const { city, province, items } = request.query;
 
         const parsedItems = String(items)
             .split(',')
@@ -20,7 +20,7 @@ class PointsController {
             .join('point_items', 'points.id', '=', 'point_items.point_id')
             .whereIn('point_items.item_id', parsedItems)
             .where('city', String(city))
-            .where('uf', String(uf))
+            .where('province', String(province))
             .distinct()
             .select('points.*');
 
@@ -70,7 +70,7 @@ class PointsController {
             latitude,
             longitude,
             city,
-            uf,
+            province,
             items
         } = request.body;
 
@@ -84,7 +84,7 @@ class PointsController {
             latitude,
             longitude,
             city,
-            uf,
+            province,
         };
 
         const insertedIds = await trx('points').insert(point);
